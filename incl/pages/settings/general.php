@@ -38,19 +38,6 @@ if ( $blocks_icon_color === '#5952de' || $disable_wpautop_checked === 'checked' 
 	wp_nonce_field( 'advgb_settings_general_nonce', 'advgb_settings_general_nonce_field' ) ?>
     <table class="form-table">
 
-		<?php
-		// Pro settings
-		if ( defined( 'ADVANCED_GUTENBERG_PRO_LOADED' ) ) {
-			if ( method_exists( 'PPB_AdvancedGutenbergPro\Utils\Definitions', 'advgb_pro_setting' ) ) {
-				echo PPB_AdvancedGutenbergPro\Utils\Definitions::advgb_pro_setting(
-					'enable_pp_branding',
-					__( 'Display PublishPress branding', 'advanced-gutenberg' ),
-					__( 'PublishPress logo and links in the footer of the admin pages', 'advanced-gutenberg' )
-				);
-			}
-		}
-		?>
-
         <tr>
             <th scope="row">
 				<?php

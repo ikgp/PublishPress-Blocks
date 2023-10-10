@@ -473,23 +473,6 @@ if ( ! class_exists( 'AdvancedGutenbergMain' ) ) {
 						ADVANCED_GUTENBERG_VERSION,
 						true
 					);
-
-					// Pro Ads in some blocks for free version
-					if ( ! defined( 'ADVANCED_GUTENBERG_PRO_LOADED' ) ) {
-						wp_enqueue_script(
-							'advgb_pro_ad_js',
-							ADVANCED_GUTENBERG_PLUGIN_DIR_URL . 'assets/blocks/pro-ad.js',
-							[ 'advgb_blocks' ],
-							ADVANCED_GUTENBERG_VERSION,
-							true
-						);
-						wp_enqueue_style(
-							'advgb_pro_ad_css',
-							ADVANCED_GUTENBERG_PLUGIN_DIR_URL . 'assets/css/pro-ad.css',
-							[],
-							ADVANCED_GUTENBERG_VERSION
-						);
-					}
 				}
 
 				if ( Utilities::settingIsEnabled( 'enable_block_access' ) ) {
@@ -2263,89 +2246,6 @@ if ( ! class_exists( 'AdvancedGutenbergMain' ) ) {
 			}
 
 			$html = '';
-			if ( ! defined( 'ADVANCED_GUTENBERG_PRO_LOADED' ) || Utilities::settingIsEnabled( 'enable_pp_branding' ) ) {
-				$html .= '<div class="advgb-footer">
-                    <footer>
-                        <div class="advgb-rating">
-                            <a href="https://wordpress.org/support/plugin/advanced-gutenberg/reviews/#new-post"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="ag-footer-link"
-                            >' .
-				         sprintf(
-					         __(
-						         'If you like %sPublishPress Blocks%s please leave us a %s rating. Thank you!',
-						         'advanced-gutenberg'
-					         ),
-					         '<strong>',
-					         '</strong>',
-					         str_repeat( '<span class="dashicons dashicons-star-filled"></span>', 5 )
-				         )
-				         . '</a>
-                        </div>
-                        <hr>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a href="https://publishpress.com"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        title="' . esc_attr__( 'About PublishPress Blocks', 'advanced-gutenberg' ) . '"
-                                        class="ag-footer-link"
-                                    >' .
-				         __( 'About', 'advanced-gutenberg' )
-				         . '</a>
-                                </li>
-                                <li>
-                                    <a href="https://publishpress.com/knowledge-base/installation/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        title="' . esc_attr__( 'Documentation', 'advanced-gutenberg' ) . '"
-                                        class="ag-footer-link"
-                                    >' .
-				         __( 'Documentation', 'advanced-gutenberg' )
-				         . '
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://publishpress.com/contact"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        title="' . esc_attr__( 'Contact the PublishPress team', 'advanced-gutenberg' ) . '"
-                                        class="ag-footer-link"
-                                    >' .
-				         __( 'Contact', 'advanced-gutenberg' )
-				         . '</a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/publishpresscom"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="ag-footer-link"
-                                    >
-                                        <span class="dashicons dashicons-twitter"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://facebook.com/publishpress"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="ag-footer-link"
-                                    >
-                                        <span class="dashicons dashicons-facebook"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="advgb-pressshack-logo">
-                            <a href="https://publishpress.com" target="_blank" rel="noopener noreferrer">
-                                <img src="' . esc_url( ADVANCED_GUTENBERG_PLUGIN_DIR_URL . 'assets/images/publishpress-logo.png' ) . '"
-                                 alt="' . esc_attr__( 'PublishPress Blocks logo', 'advanced-gutenberg' ) . '">
-                            </a>
-                        </div>
-                    </footer>
-                </div>';
-			}
 
 			// $footer is the "Thank you for creating with WordPress" text
 			$footer = $html . $footer;
@@ -2568,14 +2468,6 @@ if ( ! class_exists( 'AdvancedGutenbergMain' ) ) {
 				$advgb_settings['blocks_spacing']              = (int) $_POST['blocks_spacing'];
 				$advgb_settings['blocks_icon_color']           = sanitize_hex_color( $_POST['blocks_icon_color'] );
 				$advgb_settings['editor_width']                = sanitize_text_field( $_POST['editor_width'] );
-
-				// Pro
-				if ( defined( 'ADVANCED_GUTENBERG_PRO_LOADED' ) ) {
-					if ( method_exists( 'PPB_AdvancedGutenbergPro\Utils\Definitions',
-						'advgb_pro_setting_set_value' ) ) {
-						$advgb_settings['enable_pp_branding'] = PPB_AdvancedGutenbergPro\Utils\Definitions::advgb_pro_setting_set_value( 'enable_pp_branding' );
-					}
-				}
 
 				update_option( 'advgb_settings', $advgb_settings );
 

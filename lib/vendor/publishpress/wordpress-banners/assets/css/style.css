@@ -1,24 +1,5 @@
 /* Banner on the right inviting to install Permissions */
 
-.pp-columns-wrapper.pp-enable-sidebar {
-	display: table;
-	width: 100%;
-}
-
-.pp-columns-wrapper.pp-enable-sidebar .pp-column-left {
-	width: 75%;
-}
-
-.pp-columns-wrapper.pp-enable-sidebar .pp-column-right {
-	width: calc( 25% - 20px );
-	margin-left: 20px;
-}
-
-.pp-columns-wrapper.pp-enable-sidebar .pp-column-left,
-.pp-columns-wrapper.pp-enable-sidebar .pp-column-right {
-	float: left;
-}
-
 .nav-tab-wrapper.pp-recommendations-heading {
 	padding-bottom: 16px;
 	opacity: 0.8;

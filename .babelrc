@@ -1,11 +1,18 @@
 {
-  "presets" : [
-    ["env", {
-      "targets": {
-        "browsers": ["last 2 versions", "ie >= 10"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "> 1%",
+            "firefox esr"
+          ]
+        }
       }
-    }],
-    "react", "stage-0"
+    ],
+    "@babel/preset-react"
   ],
-  "plugins": ["transform-object-assign"]
+  "plugins": []
 }

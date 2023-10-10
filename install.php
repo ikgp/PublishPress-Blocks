@@ -47,7 +47,6 @@ if ( $saved_settings === false ) {
 		'enable_block_access'         => 1,
 		'enable_custom_styles'        => 1,
 		'enable_advgb_blocks'         => 1,
-		'enable_pp_branding'          => 1,
 		'enable_core_blocks_features' => 1,
 		'block_controls'              => 1,
 		'block_extend'                => 0,
